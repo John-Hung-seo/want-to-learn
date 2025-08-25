@@ -1,0 +1,230 @@
+# Create a minimal, Apple-style one-page HTML using only inline CSS (no JS), 
+# based on the provided content. Save it to /mnt/data and provide a download link.
+
+html = r"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>不懂，但想學｜共學計畫</title>
+  <meta name="description" content="在資訊洪流中，陪你一起篩選雜訊、專注重點，將知識轉化為可用能力的長期共學計畫。" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#0a0a0a;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#111827;
+      --radius:24px;
+      --max:1024px;
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6}
+    .wrap{max-width:var(--max);margin:0 auto;padding:48px 20px 96px}
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 16px;border:1px solid var(--line);border-radius:999px;backdrop-filter:saturate(180%) blur(10px);position:sticky;top:16px;background:rgba(255,255,255,.72)}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
+    .logo-dot{width:10px;height:10px;border-radius:50%;background:var(--fg)}
+    .nav a{color:var(--fg);text-decoration:none;font-size:14px;opacity:.8}
+    .nav a:hover{opacity:1}
+    .hero{padding:72px 0 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:end}
+    .h1{font-size:48px;line-height:1.1;letter-spacing:-.02em;margin:0 0 16px}
+    .sub{font-size:18px;color:var(--muted);margin:0 0 24px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{appearance:none;border:1px solid var(--fg);padding:12px 18px;border-radius:999px;background:var(--fg);color:#fff;font-weight:600;letter-spacing:.2px;cursor:pointer;text-decoration:none}
+    .btn.secondary{background:transparent;color:var(--fg);border-color:var(--line)}
+    .card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .kicker{font-size:12px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:12px}
+    h2{font-size:28px;letter-spacing:-.02em;margin:0 0 12px}
+    h3{font-size:20px;margin:0 0 8px}
+    p{margin:0 0 12px}
+    ul{margin:0 0 12px 20px;padding:0}
+    li{margin:6px 0}
+    .section{padding:28px 0}
+    .table{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    .table .row{display:grid;grid-template-columns:1.2fr .9fr .9fr .9fr;border-top:1px solid var(--line)}
+    .table .row.head{background:#fafafa;font-weight:600}
+    .table .cell{padding:14px 16px;border-left:1px solid var(--line)}
+    .table .cell:first-child{border-left:none}
+    .note{color:var(--muted);font-size:14px}
+    .footer{padding-top:40px;margin-top:40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--muted);font-size:14px}
+    .tag{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;margin-right:8px;color:#374151;background:#fafafa}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:10px 14px;background:#fff}
+    .check{width:16px;height:16px;border-radius:50%;border:1.5px solid #10b981;display:inline-block;position:relative}
+    .check:after{content:"";position:absolute;inset:3px;background:#10b981;border-radius:50%}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid-2,.grid-3{grid-template-columns:1fr}
+      .table .row{grid-template-columns:1.2fr 1fr 1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>不懂，但想學</span>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#about">關於</a>
+        <a href="#how">如何運作</a>
+        <a href="#theme">本季主題</a>
+        <a href="#compare">為什麼與眾不同</a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div>
+        <h1 class="h1">不懂沒關係，<br/>關鍵是要學對東西。</h1>
+        <p class="sub">在資訊洪流中，陪你一起篩選雜訊、專注重點，把知識變成能立即使用的能力。</p>
+        <div class="cta">
+          <a class="btn" href="#join">立即加入共學</a>
+          <a class="btn secondary" href="#about">了解更多</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kicker">宗旨</div>
+        <p>承認不足是成熟的開始；真正的進步，來自不斷調整與學習。<br/>「不懂，但想學」專注於高品質的內容篩選與有效率的學習方法，讓每一次投入，都能看見產出。</p>
+      </div>
+    </header>
+
+    <section id="about" class="section">
+      <div class="grid-2">
+        <div class="card">
+          <div class="kicker">我們是誰</div>
+          <h2>長期運作的共學計畫</h2>
+          <p>我們不是一次性課程，而是一群願意在不同主題中，彼此陪伴、深度探討、持續輸入與輸出的人。主題可能是 AI、商業策略或個人成長，但核心不變——用有效率的方式學到真正有用的內容。</p>
+        </div>
+        <div class="card">
+          <div class="kicker">學習節奏</div>
+          <h2>6–8 週，一次聚焦一件事</h2>
+          <ul>
+            <li><strong>Coffee Chat</strong>：彼此認識，理解本季課綱與彼此動機</li>
+            <li><strong>夥伴挑選</strong>：依互動選出約 10 位一起共學</li>
+            <li><strong>每週共學</strong>：事前作業 → 分享成果 → 交叉回饋</li>
+            <li><strong>輸入 × 實作 × 討論 × 回饋</strong>：把知識轉為可用能力</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="card">
+        <div class="kicker">如何運作</div>
+        <div class="grid-3">
+          <div>
+            <h3>鎖定主題</h3>
+            <p>每季聚焦一個核心議題（例：本季《AI 時代下的必修課》）。</p>
+          </div>
+          <div>
+            <h3>基礎分享</h3>
+            <p>開季首週整理核心概念，幫助快速上手、對齊語言。</p>
+          </div>
+          <div>
+            <h3>視角互補</h3>
+            <p>不同背景的夥伴交流，補足盲點、啟發新思路，並由學長姊引導。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="theme" class="section">
+      <div class="grid-2">
+        <div class="card">
+          <div class="kicker">本季主題</div>
+          <h2>《AI 時代下的必修課》</h2>
+          <p class="note">一次系統化整理，掌握 AI 工具在日常與工作中的實用方法，避開似是而非與無效嘗試。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+            <span class="tag">AI 工具</span>
+            <span class="tag">自動化</span>
+            <span class="tag">Vibe Coding</span>
+            <span class="tag">問題拆解</span>
+            <span class="tag">溝通與表達</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="kicker">學習目標</div>
+          <div class="grid-2">
+            <div>
+              <h3>硬技能</h3>
+              <ul>
+                <li><strong>自動化與 AI Agent</strong>：用 n8n 等工具減少重複工作</li>
+                <li><strong>Vibe Coding</strong>：非工程師也能打造 AI 輔助功能</li>
+              </ul>
+            </div>
+            <div>
+              <h3>軟實力</h3>
+              <ul>
+                <li><strong>未知問題解決</strong>：為沒有標準答案的挑戰找到解法</li>
+                <li><strong>溝通與表達</strong>：抓住真正需求，讓人與 AI 都能行動</li>
+                <li><strong>知識框架拆解</strong>：結合背景與思考，打造獨特成果</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="section">
+      <div class="kicker">我們的不同</div>
+      <div class="table">
+        <div class="row head">
+          <div class="cell">學習方式</div>
+          <div class="cell">不懂，但想學</div>
+          <div class="cell">工作坊</div>
+          <div class="cell">線上課 / 閱讀</div>
+        </div>
+        <div class="row">
+          <div class="cell">互動性</div>
+          <div class="cell"><span class="pill"><span class="check"></span>持續討論與回饋</span></div>
+          <div class="cell">當下實作與討論</div>
+          <div class="cell">主要被動聽講 / 無互動</div>
+        </div>
+        <div class="row">
+          <div class="cell">視角多元性</div>
+          <div class="cell">前輩＋多元成員視角</div>
+          <div class="cell">依講師與學員而定</div>
+          <div class="cell">單一講師 / 作者觀點</div>
+        </div>
+        <div class="row">
+          <div class="cell">時間成本與頻率</div>
+          <div class="cell">6–8 週；每週 1 次約 60 分鐘</div>
+          <div class="cell">一次性或短期密集</div>
+          <div class="cell">每週 1–2 次或自訂；閱讀 6–15 小時</div>
+        </div>
+        <div class="row">
+          <div class="cell">知識落地度</div>
+          <div class="cell">輸入＋輸出＋回饋，確保應用與成長</div>
+          <div class="cell">當下有產出，實作深度有限</div>
+          <div class="cell">停留概念層，缺乏驗證與應用</div>
+        </div>
+        <div class="row">
+          <div class="cell">陪伴感</div>
+          <div class="cell">溫暖社群長期陪伴</div>
+          <div class="cell">短期同儕</div>
+          <div class="cell">無</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join" class="section">
+      <div class="card">
+        <div class="kicker">從「不懂」開始</div>
+        <h2>一起學會未來</h2>
+        <p>立即加入我們的共學計畫——無論主題是 AI，還是下一季的新挑戰，你都不必一個人面對。</p>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn" href="#">我要加入</a>
+          <a class="btn secondary" href="#theme">查看本季主題</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 不懂，但想學</span>
+      <span class="note">設計原則：簡約留白、系統字體、清晰排版；僅用 HTML＋CSS，無 JS。</span>
+    </footer>
+  </div>
+</body>
+</html>
