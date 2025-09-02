@@ -66,6 +66,68 @@
       .grid-2,.grid-3{grid-template-columns:1fr}
       .table .row{grid-template-columns:1.2fr 1fr 1fr 1fr}
     }
+    /* 預設隱藏直式表格 */
+    .vertical-table {
+      display: none;
+    }
+
+    /* 針對手機版（螢幕寬度小於等於 900px）進行優化 */
+    @media (max-width: 900px) {
+      /* 隱藏橫式表格 */
+      .horizontal-table {
+        display: none;
+      }
+      
+      /* 顯示直式表格 */
+      .vertical-table {
+        display: block;
+      }
+      
+      /* 設定直式表格的版面 */
+      .vertical-table .row {
+        display: block; /* 讓每個「row」變成區塊元素，垂直排列 */
+        border: 1px solid var(--line);
+        border-bottom: none; /* 移除底部邊框，由整體外框取代 */
+        border-radius: 0;
+      }
+
+      /* 讓直式表格的第一個 row 有圓角 */
+      .vertical-table .row:first-child {
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+      }
+      
+      /* 讓直式表格的最後一個 row 有圓角並補回邊框 */
+      .vertical-table .row:last-child {
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
+        border-bottom: 1px solid var(--line);
+      }
+
+      /* 設定直式表格的單元格 */
+      .vertical-table .cell {
+        display: block; /* 讓每個「cell」變成區塊元素，垂直排列 */
+        padding: 16px;
+        border-left: none; /* 移除左側邊框 */
+        text-align: left;
+      }
+      
+      /* 設定直式表格的標題樣式 */
+      .vertical-table .head {
+        background: #fff7ec;
+        font-weight: 600;
+        text-align: center;
+      }
+      
+      /* 設定直式表格的項目名稱樣式 */
+      .vertical-table .vertical-label {
+        background: var(--bg);
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: .2px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -178,47 +240,122 @@
       </div>
     </section>
 
-    <section id="compare" class="section">
-      <div class="kicker">我們的不同</div>
-      <div class="table">
+<section id="compare" class="section">
+    <div class="kicker">我們的不同</div>
+    
+    <div class="table horizontal-table">
         <div class="row head">
-          <div class="cell">學習方式</div>
-          <div class="cell">不懂，但想學</div>
-          <div class="cell">工作坊</div>
-          <div class="cell">線上課 / 閱讀</div>
+            <div class="cell">學習方式</div>
+            <div class="cell">不懂，但想學</div>
+            <div class="cell">工作坊</div>
+            <div class="cell">線上課 / 閱讀</div>
         </div>
         <div class="row">
-          <div class="cell">互動性</div>
-          <div class="cell"><span class="pill"><span class="check"></span>持續討論與回饋</span></div>
-          <div class="cell">當下實作與討論</div>
-          <div class="cell">主要被動聽講 / 無互動</div>
+            <div class="cell">互動性</div>
+            <div class="cell"><span class="pill"><span class="check"></span>持續討論與回饋</span></div>
+            <div class="cell">當下實作與討論</div>
+            <div class="cell">主要被動聽講 / 無互動</div>
         </div>
         <div class="row">
-          <div class="cell">視角多元性</div>
-          <div class="cell">前輩＋多元成員視角</div>
-          <div class="cell">依講師與學員而定</div>
-          <div class="cell">單一講師 / 作者觀點</div>
+            <div class="cell">視角多元性</div>
+            <div class="cell">前輩＋多元成員視角</div>
+            <div class="cell">依講師與學員而定</div>
+            <div class="cell">單一講師 / 作者觀點</div>
         </div>
         <div class="row">
-          <div class="cell">時間成本與頻率</div>
-          <div class="cell">6–8 週；每週 1 次約 60 分鐘</div>
-          <div class="cell">一次性或短期密集</div>
-          <div class="cell">每週 1–2 次或自訂；閱讀 6–15 小時</div>
+            <div class="cell">時間成本與頻率</div>
+            <div class="cell">6–8 週；每週 1 次約 60 分鐘</div>
+            <div class="cell">一次性或短期密集</div>
+            <div class="cell">每週 1–2 次或自訂；閱讀 6–15 小時</div>
         </div>
         <div class="row">
-          <div class="cell">知識落地度</div>
-          <div class="cell">輸入＋輸出＋回饋，確保應用與成長</div>
-          <div class="cell">當下有產出，實作深度有限</div>
-          <div class="cell">停留概念層，缺乏驗證與應用</div>
+            <div class="cell">知識落地度</div>
+            <div class="cell">輸入＋輸出＋回饋，確保應用與成長</div>
+            <div class="cell">當下有產出，實作深度有限</div>
+            <div class="cell">停留概念層，缺乏驗證與應用</div>
         </div>
         <div class="row">
-          <div class="cell">陪伴感</div>
-          <div class="cell">溫暖社群長期陪伴</div>
-          <div class="cell">短期同儕</div>
-          <div class="cell">無</div>
+            <div class="cell">陪伴感</div>
+            <div class="cell">溫暖社群長期陪伴</div>
+            <div class="cell">短期同儕</div>
+            <div class="cell">無</div>
         </div>
-      </div>
-    </section>
+    </div>
+    
+    <div class="table vertical-table">
+        <div class="row head">
+            <div class="cell">不懂，但想學</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">互動性</div>
+            <div class="cell"><span class="pill"><span class="check"></span>持續討論與回饋</span></div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">視角多元性</div>
+            <div class="cell">前輩＋多元成員視角</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">時間成本與頻率</div>
+            <div class="cell">6–8 週；每週 1 次約 60 分鐘</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">知識落地度</div>
+            <div class="cell">輸入＋輸出＋回饋，確保應用與成長</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">陪伴感</div>
+            <div class="cell">溫暖社群長期陪伴</div>
+        </div>
+        
+        <div class="row head">
+            <div class="cell">工作坊</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">互動性</div>
+            <div class="cell">當下實作與討論</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">視角多元性</div>
+            <div class="cell">依講師與學員而定</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">時間成本與頻率</div>
+            <div class="cell">一次性或短期密集</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">知識落地度</div>
+            <div class="cell">當下有產出，實作深度有限</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">陪伴感</div>
+            <div class="cell">短期同儕</div>
+        </div>
+
+        <div class="row head">
+            <div class="cell">線上課 / 閱讀</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">互動性</div>
+            <div class="cell">主要被動聽講 / 無互動</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">視角多元性</div>
+            <div class="cell">單一講師 / 作者觀點</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">時間成本與頻率</div>
+            <div class="cell">每週 1–2 次或自訂；閱讀 6–15 小時</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">知識落地度</div>
+            <div class="cell">停留概念層，缺乏驗證與應用</div>
+        </div>
+        <div class="row">
+            <div class="cell vertical-label">陪伴感</div>
+            <div class="cell">無</div>
+        </div>
+    </div>
+</section>
 
     <section id="join" class="section">
       <div class="card" style="border-color:rgba(255,149,0,.35)">
